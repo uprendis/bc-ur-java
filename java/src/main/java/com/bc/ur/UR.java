@@ -9,19 +9,11 @@ public class UR {
 
     private static final String UR_TYPE_PATTERN = "^[a-z0-9-]+$";
 
-    public static UR create(String type, byte[] message) {
-        return UR_new_from_message(type, message);
-    }
-
-    public static UR create(byte[] message) {
-        return create("bytes", message);
-    }
-
     private final String type;
 
     private final byte[] cbor;
 
-    private UR(String type, byte[] cbor) {
+    public UR(String type, byte[] cbor) {
         validateType(type);
         this.type = type;
         this.cbor = cbor;
@@ -39,9 +31,5 @@ public class UR {
 
     public String getType() {
         return type;
-    }
-
-    public byte[] getMessage() {
-        return UR_get_message(this);
     }
 }
